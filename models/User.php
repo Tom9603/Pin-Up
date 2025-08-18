@@ -3,11 +3,11 @@
 class User
 {
     private ?int $id_user = null;
-    private string $pseudo = null;
-    private string $email = null;
-    private string $password = null;
-    private DateTime $date_inscription = null;
-    private string $role = null;
+    private string $pseudo;
+    private string $email;
+    private string $password;
+    private DateTime $date_inscription;
+    private array $role;
 
     public function __construct($pseudo, $email, $password)
     {
@@ -15,16 +15,16 @@ class User
         $this->email = $email;
         $this->password = $password;
         $this->date_inscription = new DateTime();
-        $this->role = "user";
+        $this->role = ["user"];
     }
 
-    // GET/SET ID
-    public function getUser(): ?int
+    // GET/SET ID User
+    public function getIdUser(): ?int
     {
         return $this->id_user;
     }
 
-    public function setUser(?int $id_user): void
+    public function setIdUser(?int $id_user): void
     {
         $this->id_user = $id_user;
     }
@@ -80,10 +80,10 @@ class User
     }
     public function getRole(): array
     {
-        return [$this->role];
+        return $this->role;
     }
 
-    public function setRole(string $role): void
+    public function setRole(array $role): void
     {
         $this->role = $role;
     }
