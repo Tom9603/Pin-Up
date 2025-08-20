@@ -32,6 +32,7 @@ class UserManager extends AbstractManager
             'pseudo' => $user->getPseudo(),
             'email' => $user->getEmail(),
             'role' => $user->getRole(),
+            'id_user' => $user->getIdUser()
         ]);
     }
 
@@ -42,7 +43,7 @@ class UserManager extends AbstractManager
         return $query->execute(['id_user' => $id_user]);
     }
 
-    // Récupère un utilisateur par son email avec findOne
+    // Récupère un utilisateur par id_user avec findOne
     public function findOne(int $id_user): ?array
     {
         $query = $this->db->prepare("SELECT id_user, pseudo, email, role, password, date_inscription FROM users WHERE id_user = :id_user");
