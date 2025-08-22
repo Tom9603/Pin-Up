@@ -4,9 +4,9 @@ class UserManager extends AbstractManager
 {
     public function createUser(User $user): ?User
     {
-        $query = $this->db->prepare("INSERT INTO users (pseudo, email, password, role) VALUES (:pseudo, :email, :password, :role)");
+        $query = $this->db->prepare(query: "INSERT INTO users (pseudo, email, password, role) VALUES (:pseudo, :email, :password, :role)");
 
-        $result = $query->execute([
+        $result = $query->execute(params: [
             'pseudo' => $user->getPseudo(),
             'email' => $user->getEmail(),
             'password' => $user->getPassword(),
@@ -28,7 +28,7 @@ class UserManager extends AbstractManager
         $query = $this->db->prepare(
             "UPDATE users SET pseudo = :pseudo, email = :email, role = :role WHERE id_user = :id_user"
         );
-        return $query->execute([
+        return $query->execute(params: [
             'pseudo' => $user->getPseudo(),
             'email' => $user->getEmail(),
             'role' => $user->getRole(),

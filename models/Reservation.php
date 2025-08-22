@@ -1,12 +1,12 @@
 <?php
 
 class Reservation {
-    private $id_reservation;
-    private $id_user;
-    private $id_event;
-    private $date_reservation;
+    private ?int $id_reservation;
+    private ?int $id_user;
+    private ?int $id_event;
+    private \DateTimeImmutable $date_reservation;
 
-    public function __construct($id_reservation, $id_user, $id_event, $date_reservation) {
+    public function __construct(?int $id_reservation, ?int $id_user, ?int $id_event, \DateTimeImmutable $date_reservation) {
         $this->id_reservation = $id_reservation;
         $this->id_user = $id_user;
         $this->id_event = $id_event;
@@ -41,11 +41,11 @@ class Reservation {
     }
 
     // GET/SET Date Reservation
-    public function getDateReservation(): DateTime {
+    public function getDateReservation(): \DateTimeImmutable {
         return $this->date_reservation;
     }
 
-    public function setDateReservation(DateTime $date_reservation): void {
+    public function setDateReservation(\DateTimeImmutable $date_reservation): void {
         $this->date_reservation = $date_reservation;
     }
 }
